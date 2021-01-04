@@ -1,0 +1,614 @@
+kill: (21671): No such process
+
+> peer-calls@4.0.0-alpha.0 build:go:linux /home/dev/suprise/peer-calls
+> make pack-linux
+
+GOOS=linux GOARCH=amd64 packr build -ldflags "-X main.gitDescribe=0d804a4-dirty" -o peer-calls
+
+> peer-calls@4.0.0-alpha.0 start /home/dev/suprise/peer-calls
+> npm run css && npm run js && npm run start:server
+
+
+> peer-calls@4.0.0-alpha.0 css /home/dev/suprise/peer-calls
+> node-sass ./src/sass/style.sass -o ./build/
+
+Rendering Complete, saving .css file...
+Wrote CSS to /home/dev/suprise/peer-calls/build/style.css
+
+> peer-calls@4.0.0-alpha.0 js /home/dev/suprise/peer-calls
+> webpack --config webpack.prod.js --optimize-minimize
+
+Hash: 36710b34c794e4ddaf5a
+Version: webpack 4.43.0
+Time: 9536ms
+Built at: 11/16/2020 7:50:50 PM
+   Asset     Size  Chunks             Chunk Names
+index.js  568 KiB       0  [emitted]  main
+Entrypoint main = index.js
+ [32] (webpack)/buildin/global.js 472 bytes {0} [built]
+ [73] ./src/client/emitter/index.ts 64 bytes {0} [built]
+[125] (webpack)/buildin/module.js 497 bytes {0} [built]
+[183] ./src/client/emitter/TypedEmitter.ts 0 bytes {0} [built]
+[184] ./src/client/emitter/SimpleEmitter.ts 2.11 KiB {0} [built]
+[414] (webpack)/buildin/harmony-module.js 573 bytes {0} [built]
+[535] util (ignored) 15 bytes {0} [built]
+[537] util (ignored) 15 bytes {0} [built]
+[545] ./src/client/index.tsx + 108 modules 820 KiB {0} [built]
+      | ./src/client/index.tsx 407 bytes [built]
+      | ./src/client/store.ts 1.54 KiB [built]
+      | ./src/client/containers/App.tsx 1.04 KiB [built]
+      | ./src/client/actions/NotifyActions.ts 1.45 KiB [built]
+      | ./src/client/actions/ChatActions.ts 2.88 KiB [built]
+      | ./src/client/middlewares.ts 459 bytes [built]
+      | ./src/client/actions/StreamActions.ts 877 bytes [built]
+      | ./src/client/reducers/index.ts 487 bytes [built]
+      | ./src/client/actions/CallActions.ts 2.86 KiB [built]
+      | ./src/client/actions/MediaActions.ts 9.65 KiB [built]
+      | ./src/client/async/index.ts 82 bytes [built]
+      | ./src/client/constants.ts 2.05 KiB [built]
+      | ./src/client/window.ts 493 bytes [built]
+      | ./src/client/socket.ts 227 bytes [built]
+      | ./src/client/messaging.ts 2.75 KiB [built]
+      |     + 94 hidden modules
+    + 537 hidden modules
+
+> peer-calls@4.0.0-alpha.0 start:server /home/dev/suprise/peer-calls
+> go run main.go
+
+2020-11-16T19:50:52.907806Z [           main] Using config: {BaseURL: BindHost: BindPort:3300 ICEServers:[{URLs:[stun:stun.l.google.com:19302] AuthType: AuthSecret:{Username: Secret:}} {URLs:[stun:global.stun.twilio.com:3478?transport=udp] AuthType: AuthSecret:{Username: Secret:}}] TLS:{Cert: Key:} Store:{Type:memory Redis:{Host: Port:0 Prefix:}} Network:{Type:mesh SFU:{Interfaces:[] JitterBuffer:false Protocols:[] TCPBindAddr: TCPListenPort:0 UDP:{PortMin:0 PortMax:0}}} Prometheus:{AccessToken:}}
+2020-11-16T19:50:52.907948Z [ adapterfactory] Using MemoryAdapter
+2020-11-16T19:50:52.908569Z [            mux] Using network type mesh
+2020-11-16T19:50:52.908839Z [           main] Listening on: [::]:3300
+2020-11-16T19:50:53.234874Z [            wss] [THL8OuFfhCzv00ax01TJn7] New websocket connection - room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:50:54.678426Z [            wss] [snJkSCMT10hVDI7K2OGkl1] New websocket connection - room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:25.879155Z [            wss] [THL8OuFfhCzv00ax01TJn7] adapter.Remove room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:25.879288Z [            wss] [THL8OuFfhCzv00ax01TJn7] wss.rooms.Exit room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:25.879328Z [            wss] [THL8OuFfhCzv00ax01TJn7] Closing websocket connection - room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:38.632957Z [            wss] [snJkSCMT10hVDI7K2OGkl1] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-16T19:51:38.633047Z [            wss] [snJkSCMT10hVDI7K2OGkl1] adapter.Remove room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:38.633059Z [            wss] [snJkSCMT10hVDI7K2OGkl1] wss.rooms.Exit room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:38.633069Z [            wss] [snJkSCMT10hVDI7K2OGkl1] Closing websocket connection - room: bb097df9-e0fa-427b-8d12-5d4db686a849-4fffcec7-aa33-4769-bac5-60366c1f99a8
+2020-11-16T19:51:38.633101Z [            wss] [snJkSCMT10hVDI7K2OGkl1] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0001be840})
+2020-11-16T19:51:49.284903Z [       renderer] Rendering template: call.html
+2020-11-16T19:51:50.186672Z [       renderer] Rendering template: call.html
+2020-11-16T19:51:50.733761Z [            wss] [ewHcdKmpae0ix6ZPuFGy22] New websocket connection - room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:51:52.197998Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] New websocket connection - room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:51:54.834769Z [           mesh] Got clients: map[ewHcdKmpae0ix6ZPuFGy22:58cd872f-fa16-4292-b242-d49ce0e44d3d]
+2020-11-16T19:51:55.011639Z [           mesh] Got clients: map[ewHcdKmpae0ix6ZPuFGy22:58cd872f-fa16-4292-b242-d49ce0e44d3d]
+2020-11-16T19:51:56.445718Z [           mesh] Got clients: map[ZG6xmgEMLcug9mYNW6FGu5:d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca ewHcdKmpae0ix6ZPuFGy22:58cd872f-fa16-4292-b242-d49ce0e44d3d]
+2020-11-16T19:52:00.638449Z [           mesh] Got clients: map[ZG6xmgEMLcug9mYNW6FGu5:d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca ewHcdKmpae0ix6ZPuFGy22:58cd872f-fa16-4292-b242-d49ce0e44d3d]
+2020-11-16T19:52:02.169458Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.351344Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.351544Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.351656Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.445865Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.446059Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.447998Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:02.701214Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:02.744610Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:02.800560Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:02.900665Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:03.055089Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:03.065745Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:03.223633Z [           mesh] Send signal from: ZG6xmgEMLcug9mYNW6FGu5 to ewHcdKmpae0ix6ZPuFGy22
+2020-11-16T19:52:03.379045Z [           mesh] Send signal from: ewHcdKmpae0ix6ZPuFGy22 to ZG6xmgEMLcug9mYNW6FGu5
+2020-11-16T19:52:11.964330Z [            wss] [ewHcdKmpae0ix6ZPuFGy22] adapter.Remove room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:52:11.964457Z [            wss] [ewHcdKmpae0ix6ZPuFGy22] wss.rooms.Exit room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:52:11.964477Z [            wss] [ewHcdKmpae0ix6ZPuFGy22] Closing websocket connection - room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:53:15.121343Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-16T19:53:15.121405Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] adapter.Remove room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:53:15.121424Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] wss.rooms.Exit room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:53:15.121435Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] Closing websocket connection - room: 58cd872f-fa16-4292-b242-d49ce0e44d3d-d0a22d4e-d4e8-4278-8ae8-64f1a67a0eca
+2020-11-16T19:53:15.121495Z [            wss] [ZG6xmgEMLcug9mYNW6FGu5] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0001beb80})
+2020-11-16T19:53:19.322418Z [       renderer] Rendering template: call.html
+2020-11-16T20:20:49.232425Z [       renderer] Rendering template: call.html
+2020-11-16T20:20:49.962680Z [            wss] [6XIDND5PCmGHpP7DhOylp7] New websocket connection - room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:20:53.367862Z [       renderer] Rendering template: call.html
+2020-11-16T20:20:54.838825Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] New websocket connection - room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:20:57.525303Z [           mesh] Got clients: map[6XIDND5PCmGHpP7DhOylp7:3b738f5e-3a8b-48fb-94bb-4524bd968d3d]
+2020-11-16T20:20:57.824053Z [           mesh] Got clients: map[6XIDND5PCmGHpP7DhOylp7:3b738f5e-3a8b-48fb-94bb-4524bd968d3d]
+2020-11-16T20:20:58.234009Z [           mesh] Got clients: map[6XIDND5PCmGHpP7DhOylp7:3b738f5e-3a8b-48fb-94bb-4524bd968d3d lKSlFK4a4DUfPMFDQl9Xr2:1a30c0f1-4c83-4b05-93c4-ed825d541238]
+2020-11-16T20:20:58.375876Z [           mesh] Got clients: map[6XIDND5PCmGHpP7DhOylp7:3b738f5e-3a8b-48fb-94bb-4524bd968d3d lKSlFK4a4DUfPMFDQl9Xr2:1a30c0f1-4c83-4b05-93c4-ed825d541238]
+2020-11-16T20:21:16.954244Z [            wss] [6XIDND5PCmGHpP7DhOylp7] adapter.Remove room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:16.954372Z [            wss] [6XIDND5PCmGHpP7DhOylp7] wss.rooms.Exit room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:16.954405Z [            wss] [6XIDND5PCmGHpP7DhOylp7] Closing websocket connection - room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:19.222191Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-16T20:21:19.222234Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] adapter.Remove room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:19.222245Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] wss.rooms.Exit room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:19.222256Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] Closing websocket connection - room: 1a30c0f1-4c83-4b05-93c4-ed825d541238-3b738f5e-3a8b-48fb-94bb-4524bd968d3d
+2020-11-16T20:21:19.222281Z [            wss] [lKSlFK4a4DUfPMFDQl9Xr2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0001bed80})
+2020-11-16T21:05:19.818736Z [       renderer] Rendering template: call.html
+2020-11-16T21:05:21.366542Z [            wss] [Umqgptt2f9g2xGJjDNG1F] New websocket connection - room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:05:22.050040Z [       renderer] Rendering template: call.html
+2020-11-16T21:05:22.777076Z [            wss] [OGqBNWI54xNMNduAi4lQ51] New websocket connection - room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:05:26.237437Z [           mesh] Got clients: map[OGqBNWI54xNMNduAi4lQ51:f4eba221-d831-4ffe-b274-99c7b790382c]
+2020-11-16T21:05:32.369748Z [           mesh] Got clients: map[OGqBNWI54xNMNduAi4lQ51:f4eba221-d831-4ffe-b274-99c7b790382c Umqgptt2f9g2xGJjDNG1F:66faf339-b7eb-45d3-b8a1-209a43a54363]
+2020-11-16T21:05:32.576899Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:32.580812Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:32.652968Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:32.678022Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:32.767477Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:32.771578Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:32.771710Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:32.933539Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:33.473252Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.489742Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.489868Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.529674Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.533893Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.591771Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.592104Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:33.980967Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:34.026390Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:34.175939Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:34.230961Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:39.621487Z [           mesh] [OGqBNWI54xNMNduAi4lQ51] hangUp event
+2020-11-16T21:05:40.387274Z [           mesh] Send signal from: OGqBNWI54xNMNduAi4lQ51 to Umqgptt2f9g2xGJjDNG1F
+2020-11-16T21:05:40.560155Z [           mesh] Send signal from: Umqgptt2f9g2xGJjDNG1F to OGqBNWI54xNMNduAi4lQ51
+2020-11-16T21:05:44.811906Z [            wss] [OGqBNWI54xNMNduAi4lQ51] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-16T21:05:44.811972Z [            wss] [OGqBNWI54xNMNduAi4lQ51] adapter.Remove room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:05:44.812101Z [            wss] [OGqBNWI54xNMNduAi4lQ51] wss.rooms.Exit room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:05:44.812142Z [            wss] [OGqBNWI54xNMNduAi4lQ51] Closing websocket connection - room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:05:44.812195Z [            wss] [OGqBNWI54xNMNduAi4lQ51] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00041e680})
+2020-11-16T21:06:20.490770Z [            wss] [Umqgptt2f9g2xGJjDNG1F] adapter.Remove room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:06:20.490818Z [            wss] [Umqgptt2f9g2xGJjDNG1F] wss.rooms.Exit room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020-11-16T21:06:20.490847Z [            wss] [Umqgptt2f9g2xGJjDNG1F] Closing websocket connection - room: 66faf339-b7eb-45d3-b8a1-209a43a54363-f4eba221-d831-4ffe-b274-99c7b790382c
+2020/11/16 23:19:03 http: TLS handshake error from 193.93.62.82:63429: tls: first record does not look like a TLS handshake
+2020/11/17 04:31:33 http: TLS handshake error from 193.93.62.73:64909: tls: first record does not look like a TLS handshake
+2020/11/17 04:59:15 http: TLS handshake error from 106.12.28.157:52384: read tcp 45.56.116.219:3300->106.12.28.157:52384: read: connection reset by peer
+2020/11/17 07:24:08 http: TLS handshake error from 185.153.199.132:52538: tls: first record does not look like a TLS handshake
+2020/11/17 17:42:25 http: TLS handshake error from 45.134.26.78:64147: tls: first record does not look like a TLS handshake
+2020/11/17 18:57:14 http: TLS handshake error from 45.134.26.78:62163: tls: first record does not look like a TLS handshake
+2020/11/18 04:58:27 http: TLS handshake error from 5.188.206.18:63258: tls: first record does not look like a TLS handshake
+2020/11/18 08:47:21 http: TLS handshake error from 45.134.26.78:64328: tls: first record does not look like a TLS handshake
+2020/11/18 08:59:08 http: TLS handshake error from 5.188.206.18:64783: tls: first record does not look like a TLS handshake
+2020/11/18 10:19:58 http: TLS handshake error from 45.134.26.78:64760: tls: first record does not look like a TLS handshake
+2020/11/18 11:51:45 http: TLS handshake error from 45.134.26.78:62842: tls: first record does not look like a TLS handshake
+2020/11/18 16:31:31 http: TLS handshake error from 5.188.206.18:64171: tls: first record does not look like a TLS handshake
+2020/11/18 18:13:37 http: TLS handshake error from 5.188.206.18:64637: tls: first record does not look like a TLS handshake
+2020-11-18T20:05:27.265179Z [       renderer] Rendering template: call.html
+2020-11-18T20:05:27.896003Z [            wss] [9UsEA6FnzutMREgrlhRod1] New websocket connection - room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:05:31.092036Z [       renderer] Rendering template: call.html
+2020-11-18T20:05:31.698300Z [            wss] [fJgLbmUPPuGsEYjhn7QJn7] New websocket connection - room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:05:32.733209Z [           mesh] Got clients: map[9UsEA6FnzutMREgrlhRod1:38866f4c-93b6-47ed-9848-093e30ed71bb]
+2020-11-18T20:05:38.350516Z [           mesh] Got clients: map[9UsEA6FnzutMREgrlhRod1:38866f4c-93b6-47ed-9848-093e30ed71bb fJgLbmUPPuGsEYjhn7QJn7:12667b3f-fef2-4ff2-af17-346806720282]
+2020-11-18T20:05:38.488963Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:38.494507Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:38.494669Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:38.586693Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:38.619568Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:38.693751Z [           mesh] Got clients: map[9UsEA6FnzutMREgrlhRod1:38866f4c-93b6-47ed-9848-093e30ed71bb fJgLbmUPPuGsEYjhn7QJn7:12667b3f-fef2-4ff2-af17-346806720282]
+2020-11-18T20:05:39.174458Z [           mesh] Got clients: map[9UsEA6FnzutMREgrlhRod1:38866f4c-93b6-47ed-9848-093e30ed71bb fJgLbmUPPuGsEYjhn7QJn7:12667b3f-fef2-4ff2-af17-346806720282]
+2020-11-18T20:05:42.414032Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:05:42.418921Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:05:42.424282Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:05:42.508169Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513128Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513283Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513361Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513438Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513509Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513743Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513864Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.513986Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.591118Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.628754Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.641759Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.675011Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.709776Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:42.726013Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.524576Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:05:46.529010Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:05:46.586615Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591183Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591398Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591507Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591619Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591725Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591853Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.591954Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.592060Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.841833Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.864429Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.879477Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.903057Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.953888Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:46.966104Z [           mesh] Send signal from: fJgLbmUPPuGsEYjhn7QJn7 to 9UsEA6FnzutMREgrlhRod1
+2020-11-18T20:05:50.338001Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:06:08.333821Z [           mesh] [9UsEA6FnzutMREgrlhRod1] hangUp event
+2020-11-18T20:06:08.916407Z [           mesh] Send signal from: 9UsEA6FnzutMREgrlhRod1 to fJgLbmUPPuGsEYjhn7QJn7
+2020-11-18T20:06:11.669578Z [            wss] [9UsEA6FnzutMREgrlhRod1] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-18T20:06:11.669624Z [            wss] [9UsEA6FnzutMREgrlhRod1] adapter.Remove room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:06:11.669768Z [            wss] [9UsEA6FnzutMREgrlhRod1] wss.rooms.Exit room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:06:11.670065Z [            wss] [9UsEA6FnzutMREgrlhRod1] Closing websocket connection - room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:06:11.670110Z [            wss] [9UsEA6FnzutMREgrlhRod1] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0000b1540})
+2020-11-18T20:06:52.341935Z [            wss] [fJgLbmUPPuGsEYjhn7QJn7] adapter.Remove room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:06:52.341988Z [            wss] [fJgLbmUPPuGsEYjhn7QJn7] wss.rooms.Exit room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-18T20:06:52.342000Z [            wss] [fJgLbmUPPuGsEYjhn7QJn7] Closing websocket connection - room: 38866f4c-93b6-47ed-9848-093e30ed71bb-12667b3f-fef2-4ff2-af17-346806720282
+2020-11-19T01:02:41.047734Z [       renderer] Rendering template: call.html
+2020-11-19T01:02:41.713902Z [            wss] [peAegBdndHGmAn25gDhmt6] New websocket connection - room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:02:45.236025Z [           mesh] Got clients: map[peAegBdndHGmAn25gDhmt6:1f75c227-2197-4c1d-91f2-a3328de91f86]
+2020-11-19T01:02:45.555827Z [       renderer] Rendering template: call.html
+2020-11-19T01:02:47.025048Z [            wss] [CSmUeo8qITC0Y2pshklM45] New websocket connection - room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:02:52.509216Z [           mesh] Got clients: map[CSmUeo8qITC0Y2pshklM45:13e275ff-69d3-43f4-b17d-c76fb8ca9f6c peAegBdndHGmAn25gDhmt6:1f75c227-2197-4c1d-91f2-a3328de91f86]
+2020-11-19T01:02:52.690930Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.705338Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.715090Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.718009Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.773584Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.778757Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.813168Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.834859Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:52.845792Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.051293Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:53.056075Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:53.060920Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:53.386199Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:53.692903Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.693080Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.693245Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.693673Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.694982Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.696433Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.735190Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.737919Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:53.744788Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.748123Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.752938Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.758060Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.759942Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.767750Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.767904Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.773064Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.773193Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:53.774548Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:54.489306Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:02:54.732423Z [           mesh] Send signal from: CSmUeo8qITC0Y2pshklM45 to peAegBdndHGmAn25gDhmt6
+2020-11-19T01:02:54.791512Z [           mesh] Send signal from: peAegBdndHGmAn25gDhmt6 to CSmUeo8qITC0Y2pshklM45
+2020-11-19T01:04:10.067656Z [           mesh] [CSmUeo8qITC0Y2pshklM45] hangUp event
+2020-11-19T01:04:37.672531Z [            wss] [peAegBdndHGmAn25gDhmt6] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-19T01:04:37.672567Z [            wss] [peAegBdndHGmAn25gDhmt6] adapter.Remove room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:04:37.672785Z [            wss] [peAegBdndHGmAn25gDhmt6] wss.rooms.Exit room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:04:37.672865Z [            wss] [peAegBdndHGmAn25gDhmt6] Closing websocket connection - room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:04:37.672959Z [            wss] [peAegBdndHGmAn25gDhmt6] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00000fbe0})
+2020-11-19T01:04:46.000195Z [       renderer] Rendering template: call.html
+2020-11-19T01:04:47.501983Z [       renderer] Rendering template: call.html
+2020-11-19T01:04:48.124998Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] New websocket connection - room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:04:50.298432Z [            wss] [GBqoyPaiuHYMnk2Lk4Vef5] New websocket connection - room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:04:51.585717Z [           mesh] Got clients: map[RDYHAWp1soLoHf2pCGl7p7:f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca]
+2020-11-19T01:04:58.441459Z [           mesh] Got clients: map[GBqoyPaiuHYMnk2Lk4Vef5:338bc225-d298-41ab-9a57-0f411f3fcd83 RDYHAWp1soLoHf2pCGl7p7:f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca]
+2020-11-19T01:04:58.581292Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:58.587889Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:58.588039Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:58.659029Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:58.692794Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:58.772449Z [           mesh] Got clients: map[GBqoyPaiuHYMnk2Lk4Vef5:338bc225-d298-41ab-9a57-0f411f3fcd83 RDYHAWp1soLoHf2pCGl7p7:f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca]
+2020-11-19T01:04:59.000364Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:04:59.000533Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:04:59.000595Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:04:59.058431Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.058581Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.058642Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.063812Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.063951Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.064070Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.064145Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.064210Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.064262Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.137942Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.183025Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.219417Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.256296Z [           mesh] Got clients: map[GBqoyPaiuHYMnk2Lk4Vef5:338bc225-d298-41ab-9a57-0f411f3fcd83 RDYHAWp1soLoHf2pCGl7p7:f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca]
+2020-11-19T01:04:59.263869Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.264038Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.273536Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.818457Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:04:59.843519Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:04:59.964787Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970036Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970161Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970236Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970338Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970409Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970488Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970556Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:04:59.970623Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.022617Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:05:00.080700Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.080904Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.080986Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.081056Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.081198Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.081298Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.081386Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.081458Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.086985Z [           mesh] Send signal from: GBqoyPaiuHYMnk2Lk4Vef5 to RDYHAWp1soLoHf2pCGl7p7
+2020-11-19T01:05:00.141078Z [           mesh] Send signal from: RDYHAWp1soLoHf2pCGl7p7 to GBqoyPaiuHYMnk2Lk4Vef5
+2020-11-19T01:05:06.175641Z [            wss] [GBqoyPaiuHYMnk2Lk4Vef5] adapter.Remove room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:06.175787Z [            wss] [GBqoyPaiuHYMnk2Lk4Vef5] wss.rooms.Exit room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:06.175822Z [            wss] [GBqoyPaiuHYMnk2Lk4Vef5] Closing websocket connection - room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:08.598525Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-19T01:05:08.598587Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] adapter.Remove room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:08.598606Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] wss.rooms.Exit room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:08.598641Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] Closing websocket connection - room: f9ef7d89-e09b-4a2f-8f7a-33e5fce936ca-338bc225-d298-41ab-9a57-0f411f3fcd83
+2020-11-19T01:05:08.598690Z [            wss] [RDYHAWp1soLoHf2pCGl7p7] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00000ff80})
+2020-11-19T01:05:44.621106Z [       renderer] Rendering template: call.html
+2020-11-19T01:05:44.842203Z [       renderer] Rendering template: call.html
+2020-11-19T01:05:45.286799Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] New websocket connection - room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:05:45.683420Z [            wss] [w3tbsr2d9cL74vg64LuTo2] New websocket connection - room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:05:49.855410Z [           mesh] Got clients: map[RLe6ZBBkgS1srdFH0kcyf4:5d4a1f91-5ec0-4c90-ab17-90e2ab322c19]
+2020-11-19T01:05:50.065894Z [           mesh] Got clients: map[RLe6ZBBkgS1srdFH0kcyf4:5d4a1f91-5ec0-4c90-ab17-90e2ab322c19 w3tbsr2d9cL74vg64LuTo2:fa172ba1-b3fa-4468-9d32-fef6446b4769]
+2020-11-19T01:05:50.173950Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:50.177745Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:50.177876Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:50.231519Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:50.276134Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:50.276389Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.048279Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:51.058233Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:51.058431Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:51.395244Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:51.731566Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.731765Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.731853Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.731934Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.732054Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.767748Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.767867Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.826012Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.826193Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.826304Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:51.826423Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:52.562739Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:52.573659Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:05:52.719686Z [           mesh] Send signal from: w3tbsr2d9cL74vg64LuTo2 to RLe6ZBBkgS1srdFH0kcyf4
+2020-11-19T01:05:52.776182Z [           mesh] Send signal from: RLe6ZBBkgS1srdFH0kcyf4 to w3tbsr2d9cL74vg64LuTo2
+2020-11-19T01:19:08.106500Z [           mesh] [w3tbsr2d9cL74vg64LuTo2] hangUp event
+2020-11-19T01:19:11.084679Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-19T01:19:11.084722Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] adapter.Remove room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.084915Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] wss.rooms.Exit room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.084952Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] Closing websocket connection - room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.084999Z [            wss] [RLe6ZBBkgS1srdFH0kcyf4] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc000146400})
+2020-11-19T01:19:11.538156Z [            wss] [w3tbsr2d9cL74vg64LuTo2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-19T01:19:11.538190Z [            wss] [w3tbsr2d9cL74vg64LuTo2] adapter.Remove room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.538201Z [            wss] [w3tbsr2d9cL74vg64LuTo2] wss.rooms.Exit room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.538211Z [            wss] [w3tbsr2d9cL74vg64LuTo2] Closing websocket connection - room: fa172ba1-b3fa-4468-9d32-fef6446b4769-5d4a1f91-5ec0-4c90-ab17-90e2ab322c19
+2020-11-19T01:19:11.538836Z [            wss] [w3tbsr2d9cL74vg64LuTo2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0001466e0})
+2020-11-19T01:21:01.629945Z [            wss] [CSmUeo8qITC0Y2pshklM45] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: read tcp 45.56.116.219:3300->107.107.62.24:41268: read: connection refused
+2020-11-19T01:21:01.630009Z [            wss] [CSmUeo8qITC0Y2pshklM45] adapter.Remove room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:21:01.630064Z [            wss] [CSmUeo8qITC0Y2pshklM45] wss.rooms.Exit room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:21:01.630078Z [            wss] [CSmUeo8qITC0Y2pshklM45] Closing websocket connection - room: 13e275ff-69d3-43f4-b17d-c76fb8ca9f6c-1f75c227-2197-4c1d-91f2-a3328de91f86
+2020-11-19T01:21:01.630182Z [            wss] [CSmUeo8qITC0Y2pshklM45] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: read tcp 45.56.116.219:3300->107.107.62.24:41268: read: connection refused 0xc0001be3a0})
+2020/11/19 19:21:11 http: TLS handshake error from 5.8.18.88:63852: tls: first record does not look like a TLS handshake
+2020/11/20 00:43:53 http: TLS handshake error from 5.8.18.88:63337: tls: first record does not look like a TLS handshake
+2020/11/20 02:17:11 http: TLS handshake error from 45.134.26.78:64172: tls: first record does not look like a TLS handshake
+2020/11/20 04:48:04 http: TLS handshake error from 193.93.62.22:63332: tls: first record does not look like a TLS handshake
+2020/11/20 07:10:06 http: TLS handshake error from 45.134.26.78:64107: tls: first record does not look like a TLS handshake
+2020/11/20 10:54:02 http: TLS handshake error from 78.142.18.52:64936: tls: first record does not look like a TLS handshake
+2020/11/20 12:21:11 http: TLS handshake error from 87.251.74.68:1938: tls: first record does not look like a TLS handshake
+2020/11/20 14:12:42 http: TLS handshake error from 45.146.165.230:65112: tls: first record does not look like a TLS handshake
+2020/11/21 14:10:48 http: TLS handshake error from 81.30.144.119:65373: tls: first record does not look like a TLS handshake
+2020/11/21 19:24:15 http: TLS handshake error from 81.30.144.119:64047: tls: first record does not look like a TLS handshake
+2020/11/22 05:27:13 http: TLS handshake error from 91.241.19.59:65477: tls: first record does not look like a TLS handshake
+2020/11/22 09:34:21 http: TLS handshake error from 194.61.55.248:2168: tls: first record does not look like a TLS handshake
+Hangup
+kill: (14091): No such process
+
+> peer-calls@4.0.0-alpha.0 build:go:linux /home/dev/suprise/peer-calls
+> make pack-linux
+
+GOOS=linux GOARCH=amd64 packr build -ldflags "-X main.gitDescribe=c56f2c8-dirty" -o peer-calls
+
+> peer-calls@4.0.0-alpha.0 start /home/dev/suprise/peer-calls
+> npm run css && npm run js && npm run start:server
+
+
+> peer-calls@4.0.0-alpha.0 css /home/dev/suprise/peer-calls
+> node-sass ./src/sass/style.sass -o ./build/
+
+Rendering Complete, saving .css file...
+Wrote CSS to /home/dev/suprise/peer-calls/build/style.css
+
+> peer-calls@4.0.0-alpha.0 js /home/dev/suprise/peer-calls
+> webpack --config webpack.prod.js --optimize-minimize
+
+Hash: 36710b34c794e4ddaf5a
+Version: webpack 4.43.0
+Time: 9172ms
+Built at: 11/26/2020 6:33:55 PM
+   Asset     Size  Chunks             Chunk Names
+index.js  568 KiB       0  [emitted]  main
+Entrypoint main = index.js
+ [32] (webpack)/buildin/global.js 472 bytes {0} [built]
+ [73] ./src/client/emitter/index.ts 64 bytes {0} [built]
+[125] (webpack)/buildin/module.js 497 bytes {0} [built]
+[183] ./src/client/emitter/TypedEmitter.ts 0 bytes {0} [built]
+[184] ./src/client/emitter/SimpleEmitter.ts 2.11 KiB {0} [built]
+[414] (webpack)/buildin/harmony-module.js 573 bytes {0} [built]
+[535] util (ignored) 15 bytes {0} [built]
+[537] util (ignored) 15 bytes {0} [built]
+[545] ./src/client/index.tsx + 108 modules 820 KiB {0} [built]
+      | ./src/client/index.tsx 407 bytes [built]
+      | ./src/client/store.ts 1.54 KiB [built]
+      | ./src/client/containers/App.tsx 1.04 KiB [built]
+      | ./src/client/actions/NotifyActions.ts 1.45 KiB [built]
+      | ./src/client/actions/ChatActions.ts 2.88 KiB [built]
+      | ./src/client/middlewares.ts 459 bytes [built]
+      | ./src/client/actions/StreamActions.ts 877 bytes [built]
+      | ./src/client/reducers/index.ts 487 bytes [built]
+      | ./src/client/actions/CallActions.ts 2.86 KiB [built]
+      | ./src/client/actions/MediaActions.ts 9.65 KiB [built]
+      | ./src/client/async/index.ts 82 bytes [built]
+      | ./src/client/constants.ts 2.05 KiB [built]
+      | ./src/client/window.ts 493 bytes [built]
+      | ./src/client/socket.ts 227 bytes [built]
+      | ./src/client/messaging.ts 2.75 KiB [built]
+      |     + 94 hidden modules
+    + 537 hidden modules
+
+> peer-calls@4.0.0-alpha.0 start:server /home/dev/suprise/peer-calls
+> go run main.go
+
+2020-11-26T18:33:58.215701Z [           main] Using config: {BaseURL: BindHost: BindPort:3300 ICEServers:[{URLs:[stun:stun.l.google.com:19302] AuthType: AuthSecret:{Username: Secret:}} {URLs:[stun:global.stun.twilio.com:3478?transport=udp] AuthType: AuthSecret:{Username: Secret:}}] TLS:{Cert: Key:} Store:{Type:memory Redis:{Host: Port:0 Prefix:}} Network:{Type:mesh SFU:{Interfaces:[] JitterBuffer:false Protocols:[] TCPBindAddr: TCPListenPort:0 UDP:{PortMin:0 PortMax:0}}} Prometheus:{AccessToken:}}
+2020-11-26T18:33:58.215862Z [ adapterfactory] Using MemoryAdapter
+2020-11-26T18:33:58.216430Z [            mux] Using network type mesh
+2020-11-26T18:33:58.216686Z [           main] Listening on: [::]:3300
+2020-11-26T18:34:39.435727Z [       renderer] Rendering template: call.html
+2020-11-26T18:34:39.565781Z [       renderer] Rendering template: call.html
+2020-11-26T18:34:41.749333Z [            wss] [FRbITvkO2iBh9cV58A4ng2] New websocket connection - room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:34:42.875822Z [       renderer] Rendering template: call.html
+2020-11-26T18:34:46.016970Z [            wss] [Y0IEip76DxvYyNievfI9H2] New websocket connection - room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:34:52.180040Z [           mesh] Got clients: map[Y0IEip76DxvYyNievfI9H2:969692cb-816c-4ad0-8f86-3e0e5c9b725c]
+2020-11-26T18:34:58.071986Z [           mesh] Got clients: map[FRbITvkO2iBh9cV58A4ng2:93756a83-cf3a-4c13-9a1d-09044cbce39a Y0IEip76DxvYyNievfI9H2:969692cb-816c-4ad0-8f86-3e0e5c9b725c]
+2020-11-26T18:34:58.315560Z [           mesh] Got clients: map[FRbITvkO2iBh9cV58A4ng2:93756a83-cf3a-4c13-9a1d-09044cbce39a Y0IEip76DxvYyNievfI9H2:969692cb-816c-4ad0-8f86-3e0e5c9b725c]
+2020-11-26T18:34:58.934567Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:34:58.934763Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:34:58.935020Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:34:59.386677Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:34:59.821361Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:34:59.821534Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:34:59.872202Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:35:02.027050Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.027428Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.960254Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.960427Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.960511Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.960586Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:02.960661Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:03.514868Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:35:03.614169Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:35:04.983885Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:05.173405Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:35:23.738774Z [           mesh] Got clients: map[FRbITvkO2iBh9cV58A4ng2:93756a83-cf3a-4c13-9a1d-09044cbce39a Y0IEip76DxvYyNievfI9H2:969692cb-816c-4ad0-8f86-3e0e5c9b725c]
+2020-11-26T18:35:32.904902Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450185Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450363Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450431Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450554Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450606Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:34.450661Z [           mesh] Send signal from: FRbITvkO2iBh9cV58A4ng2 to Y0IEip76DxvYyNievfI9H2
+2020-11-26T18:35:35.379433Z [           mesh] Send signal from: Y0IEip76DxvYyNievfI9H2 to FRbITvkO2iBh9cV58A4ng2
+2020-11-26T18:37:46.131875Z [            wss] [FRbITvkO2iBh9cV58A4ng2] adapter.Remove room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:37:46.132067Z [            wss] [FRbITvkO2iBh9cV58A4ng2] wss.rooms.Exit room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:37:46.132092Z [            wss] [FRbITvkO2iBh9cV58A4ng2] Closing websocket connection - room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:39:06.147649Z [            wss] [Y0IEip76DxvYyNievfI9H2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-26T18:39:06.147697Z [            wss] [Y0IEip76DxvYyNievfI9H2] adapter.Remove room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:39:06.147706Z [            wss] [Y0IEip76DxvYyNievfI9H2] wss.rooms.Exit room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:39:06.147725Z [            wss] [Y0IEip76DxvYyNievfI9H2] Closing websocket connection - room: 93756a83-cf3a-4c13-9a1d-09044cbce39a-969692cb-816c-4ad0-8f86-3e0e5c9b725c
+2020-11-26T18:39:06.147884Z [            wss] [Y0IEip76DxvYyNievfI9H2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc000360a40})
+2020-11-26T18:39:13.972016Z [       renderer] Rendering template: call.html
+2020-11-26T18:39:15.333082Z [       renderer] Rendering template: call.html
+2020-11-26T18:39:17.531489Z [            wss] [z63jwMszOhmw6MSwY23ix2] New websocket connection - room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:39:18.470195Z [            wss] [m7fULqskwSDYej64DZ9c91] New websocket connection - room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:39:24.171843Z [           mesh] Got clients: map[m7fULqskwSDYej64DZ9c91:c1524c99-7351-42dd-9c9e-3189558e66b0]
+2020-11-26T18:39:24.280310Z [           mesh] Got clients: map[m7fULqskwSDYej64DZ9c91:c1524c99-7351-42dd-9c9e-3189558e66b0]
+2020-11-26T18:39:26.202119Z [           mesh] Got clients: map[m7fULqskwSDYej64DZ9c91:c1524c99-7351-42dd-9c9e-3189558e66b0 z63jwMszOhmw6MSwY23ix2:f7dd40b6-b28b-4e8c-ac38-a3734409833a]
+2020-11-26T18:39:29.931591Z [           mesh] Got clients: map[m7fULqskwSDYej64DZ9c91:c1524c99-7351-42dd-9c9e-3189558e66b0 z63jwMszOhmw6MSwY23ix2:f7dd40b6-b28b-4e8c-ac38-a3734409833a]
+2020-11-26T18:39:31.001881Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:31.636059Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:31.636654Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:31.636878Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:32.895814Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:32.895965Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:32.896041Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:33.094409Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:33.941830Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:33.942011Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:34.086800Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:41.537965Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:41.538216Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:41.538314Z [           mesh] Got clients: map[m7fULqskwSDYej64DZ9c91:c1524c99-7351-42dd-9c9e-3189558e66b0 z63jwMszOhmw6MSwY23ix2:f7dd40b6-b28b-4e8c-ac38-a3734409833a]
+2020-11-26T18:39:43.059724Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:43.525456Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:43.525645Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:43.525714Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:39:45.049963Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:45.102404Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:45.102640Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:45.146392Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:45.149092Z [           mesh] Send signal from: z63jwMszOhmw6MSwY23ix2 to m7fULqskwSDYej64DZ9c91
+2020-11-26T18:39:45.310738Z [           mesh] Send signal from: m7fULqskwSDYej64DZ9c91 to z63jwMszOhmw6MSwY23ix2
+2020-11-26T18:40:07.941276Z [            wss] [z63jwMszOhmw6MSwY23ix2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-26T18:40:07.941306Z [            wss] [z63jwMszOhmw6MSwY23ix2] adapter.Remove room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:40:07.941370Z [            wss] [z63jwMszOhmw6MSwY23ix2] wss.rooms.Exit room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:40:07.941380Z [            wss] [z63jwMszOhmw6MSwY23ix2] Closing websocket connection - room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:40:07.941403Z [            wss] [z63jwMszOhmw6MSwY23ix2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00000ef80})
+2020-11-26T18:40:14.924338Z [            wss] [m7fULqskwSDYej64DZ9c91] adapter.Remove room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:40:14.924383Z [            wss] [m7fULqskwSDYej64DZ9c91] wss.rooms.Exit room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T18:40:14.924407Z [            wss] [m7fULqskwSDYej64DZ9c91] Closing websocket connection - room: c1524c99-7351-42dd-9c9e-3189558e66b0-f7dd40b6-b28b-4e8c-ac38-a3734409833a
+2020-11-26T20:30:29.359083Z [       renderer] Rendering template: call.html
+2020-11-26T20:30:30.014008Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] New websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:30:33.404243Z [       renderer] Rendering template: call.html
+2020-11-26T20:30:34.074439Z [            wss] [XSgDUF43J0lTk2ky5IlK63] New websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:30:35.397896Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a]
+2020-11-26T20:30:43.107707Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a XSgDUF43J0lTk2ky5IlK63:c41fb8b7-af8f-48dd-8560-503232f9eeea]
+2020-11-26T20:30:43.249903Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:43.255328Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:43.255531Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:43.350185Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a XSgDUF43J0lTk2ky5IlK63:c41fb8b7-af8f-48dd-8560-503232f9eeea]
+2020-11-26T20:30:43.413401Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:43.413612Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:43.812878Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a XSgDUF43J0lTk2ky5IlK63:c41fb8b7-af8f-48dd-8560-503232f9eeea]
+2020-11-26T20:30:44.273249Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a XSgDUF43J0lTk2ky5IlK63:c41fb8b7-af8f-48dd-8560-503232f9eeea]
+2020-11-26T20:30:44.759206Z [           mesh] Got clients: map[ABL8cJcxSDMCfuzBwo6nt2:5a4c5a61-dde1-44a2-89ed-8d6f42b3195a XSgDUF43J0lTk2ky5IlK63:c41fb8b7-af8f-48dd-8560-503232f9eeea]
+2020-11-26T20:30:46.948782Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:30:47.044891Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.051962Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.052082Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.052190Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.052278Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.052386Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.053009Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.053084Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.053168Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.131689Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.169003Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.183100Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.201897Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:30:47.202056Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:30:47.213579Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.259666Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:47.271662Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:50.752253Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:30:51.729656Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:30:51.787130Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.787266Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.787328Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.787391Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.794024Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.794168Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.794259Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.794354Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:51.794491Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.031730Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.080228Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.113920Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.145327Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.153427Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:52.165194Z [           mesh] Send signal from: XSgDUF43J0lTk2ky5IlK63 to ABL8cJcxSDMCfuzBwo6nt2
+2020-11-26T20:30:54.477597Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:31:04.139109Z [           mesh] [ABL8cJcxSDMCfuzBwo6nt2] hangUp event
+2020-11-26T20:31:04.727257Z [           mesh] Send signal from: ABL8cJcxSDMCfuzBwo6nt2 to XSgDUF43J0lTk2ky5IlK63
+2020-11-26T20:31:07.875669Z [            wss] [XSgDUF43J0lTk2ky5IlK63] adapter.Remove room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:31:07.875792Z [            wss] [XSgDUF43J0lTk2ky5IlK63] wss.rooms.Exit room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:31:07.875820Z [            wss] [XSgDUF43J0lTk2ky5IlK63] Closing websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:32:23.637735Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-26T20:32:23.637794Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] adapter.Remove room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:32:23.637803Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] wss.rooms.Exit room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:32:23.637817Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Closing websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:32:23.637879Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00000fca0})
+2020-11-26T20:45:23.963884Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] New websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:47:31.708856Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-26T20:47:31.708933Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] adapter.Remove room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:47:31.708946Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] wss.rooms.Exit room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:47:31.708961Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Closing websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:47:31.709047Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc0001e2200})
+2020-11-26T20:55:33.443219Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] New websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:55:42.465809Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Subscription error: client.read - error reading data: failed to get reader: failed to read frame header: EOF
+2020-11-26T20:55:42.465848Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] adapter.Remove room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:55:42.465858Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] wss.rooms.Exit room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:55:42.465883Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Closing websocket connection - room: 5a4c5a61-dde1-44a2-89ed-8d6f42b3195a-c41fb8b7-af8f-48dd-8560-503232f9eeea
+2020-11-26T20:55:42.465947Z [            wss] [ABL8cJcxSDMCfuzBwo6nt2] Error closing websocket connection: %!w(*fmt.wrapError=&{failed to close WebSocket: failed to write control frame opClose: WebSocket closed: failed to read frame header: EOF 0xc00000ebc0})
+2020/11/28 00:57:58 http: TLS handshake error from 45.141.87.11:46748: EOF
+2020/11/28 00:57:58 http: TLS handshake error from 45.141.87.11:46778: tls: first record does not look like a TLS handshake
+Hangup

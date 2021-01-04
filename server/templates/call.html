@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suprise Call</title>
+  {{template "header" .}}
+</head>
+<body class="call">
+  <input type="hidden" id="config" value="{{.Data}}">
+  <div id="container"></div>
+  <noscript>JavaScript must be enabled for this application</noscript>
+  <script src="{{.BaseURL}}/static/index.js?{{.Version}}"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+    $("form[class='media']").hide();
+		var urlParams = new URLSearchParams(window.location.search);
+    function do_set_parameters() {
+			//$("[name='nickname']").val(urlParams.get("nickname"));
+			var element = document.querySelector("[name='nickname']");
+			var previousValue = element.value;
+	   	element.value = urlParams.get("nickname");
+	    const event = new Event('input', { bubbles: true });
+			element._valueTracker.setValue(previousValue);
+	    element.dispatchEvent(event);
+    }
+    function do_press_submit() {
+			var element = document.querySelector("[name='nickname']");
+			if ( element.value != urlParams.get("nickname")) {
+				do_set_parameters();
+		    setTimeout(function() {
+			    do_press_submit();
+		    }, 1000);
+			} else {
+				$("button[type='submit']").click();
+		    setTimeout(function() {
+					var video_element = $("#video-_me_");
+					if (video_element.length == 0 || $(video_element).is(":visible") == false) {
+			    	do_press_submit();
+			   	}
+		    }, 1000);					
+			}
+    }
+    do_set_parameters();
+    setTimeout(function() {
+	    do_press_submit();
+    }, 3000);
+	</script>
+</body>
+</html>
